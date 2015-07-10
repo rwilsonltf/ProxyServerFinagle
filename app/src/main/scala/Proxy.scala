@@ -23,7 +23,7 @@ object Proxy extends App {
   val clientService = new Service[HttpRequest, HttpResponse] {
     def apply(req: HttpRequest): Future[HttpResponse] = {
       req.headers().add("X-SOURCE-IP", req.asInstanceOf[Request].remoteSocketAddress.getAddress())
-      req.headers().add("X-WARNING", "something")
+      req.headers().add("X-WARNING", "This is not being authenticated")
 
       client.apply(req)
     }

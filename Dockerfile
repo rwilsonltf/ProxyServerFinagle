@@ -1,8 +1,8 @@
 FROM rwilsonltf/scala-base
 
-RUN git clone https://github.com/rwilsonltf/ProxyServerFinagle.git
+COPY app /app
 
-WORKDIR ProxyServerFinagle
+WORKDIR /app
 
 RUN sbt compile
 

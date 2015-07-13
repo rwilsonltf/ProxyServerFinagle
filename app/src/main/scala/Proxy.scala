@@ -9,12 +9,14 @@ import com.twitter.util.StorageUnitConversions.intToStorageUnitableWholeNumber
 
 object Proxy extends App {
 
+  val target_host = sys.env.get("TARGET_HOST")
+
   val client: Service[HttpRequest, HttpResponse] = {
       ClientBuilder()
         .codec(Http()
           .maxResponseSize(15.megabytes)
           .maxRequestSize(15.megabytes))
-        .hosts("localhost:8888")
+        .hosts(target_host.getOrElse("192.168.1.108:8090"))
         .hostConnectionLimit(1)
         .failFast(false)
         .build()

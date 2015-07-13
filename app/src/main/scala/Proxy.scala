@@ -16,7 +16,7 @@ object Proxy extends App {
         .codec(Http()
           .maxResponseSize(15.megabytes)
           .maxRequestSize(15.megabytes))
-        .hosts(target_host.getOrElse("192.168.1.108:8090"))
+        .hosts(target_host.getOrElse("localhost:8090"))
         .hostConnectionLimit(1)
         .failFast(false)
         .build()
